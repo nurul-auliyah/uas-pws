@@ -1,0 +1,13 @@
+Kampus
+Table :
+1. Tabel fakultas (fakultas_id, fakultas_code, fakultas_name)
+2. Tabel prodi (prodi_id, fakultas_id, prodi_code, prodi_name)
+3. Tabel mahasiswa (mahasiswa_id, prodi_id, mahasiswa_nim, mahasiswa_name, mahasiswa_bla_bla_bla)
+4. Tabel dosen (dosen_id, prodi_id, dosen_nik, dosen_name, dosen_bla_bla_bla) isi (1: Fahry; 2: Dading)
+5. Tabel mata_kuliah (mata_kuliah_id, prodi_id, mata_kuliah_code, mata_kuliah_name) isi (1: pws | 2: pc)
+6. Tabel kelas (kelas_id, prodi_id, mata_kuliah_id, kelas_code, kelas_name) isi (pws-s5-ganjil-2526 | pc-s5-ganjil-2526)
+7. Tabel kelas_mahasiswa (kelas_mahasiswa_id, kelas_id, mahasiswa_id) isi (1, 1, 1); (2, 1, 2); (2, 1, 3) | (1, 2, 1); (2, 2, 2)
+8. Tabel mengajar (mengajar_id, kelas_id, dosen_id) isi (1, 1, 1) | (2, 2, 2)
+
+
+
