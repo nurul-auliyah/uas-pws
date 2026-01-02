@@ -7,6 +7,12 @@ use App\Http\Controllers\Api\KelasMahasiswaController;
 use App\Http\Controllers\Api\MengajarController;
 use App\Http\Controllers\Api\FakultasController;
 use App\Http\Controllers\Api\ProdiController;
+<<<<<<< Updated upstream
+=======
+use App\Http\Controllers\Api\DosenController;
+use App\Http\Controllers\Api\MahasiswaController;
+use App\Http\Controllers\Api\MataKuliahController;
+>>>>>>> Stashed changes
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -15,8 +21,13 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
+<<<<<<< Updated upstream
 
     //fakultas//
+=======
+    
+
+>>>>>>> Stashed changes
     Route::get('/fakultas', [FakultasController::class, 'index']);
     Route::post('/fakultas', [FakultasController::class, 'store']);
     Route::get('/fakultas/{id}', [FakultasController::class, 'show']);
@@ -34,6 +45,7 @@ Route::middleware('auth:api')->group(function () {
     // Prodi by Fakultas
     Route::get('/fakultas/{fakultas_id}/prodi', [ProdiController::class, 'byFakultas']);
 
+<<<<<<< Updated upstream
     //Kelas//
     Route::get('/', [KelasController::class, 'index']);
     Route::post('/', [KelasController::class, 'store']);
@@ -54,4 +66,24 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/{id}', [MengajarController::class, 'show']);
     Route::put('/{id}', [MengajarController::class, 'update']);
     Route::delete('/{id}', [MengajarController::class, 'destroy']);
+=======
+    Route::get('/dosen', [DosenController::class, 'index']);
+    Route::post('/dosen', [DosenController::class, 'store']);
+    Route::get('/dosen/{id}', [DosenController::class, 'show']);
+    Route::put('/dosen/{id}', [DosenController::class, 'update']);
+    Route::delete('/dosen/{id}', [DosenController::class, 'destroy']);
+
+
+    Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+    Route::post('/mahasiswa', [MahasiswaController::class, 'store']);
+    Route::get('/mahasiswa/{id}', [MahasiswaController::class, 'show']);
+    Route::put('/mahasiswa/{id}', [MahasiswaController::class, 'update']);
+    Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
+
+    Route::get('/mata-kuliah', [MataKuliahController::class, 'index']);
+    Route::post('/mata-kuliah', [MataKuliahController::class, 'store']);
+    Route::get('/mata-kuliah/{id}', [MataKuliahController::class, 'show']);
+    Route::put('/mata-kuliah/{id}', [MataKuliahController::class, 'update']);
+    Route::delete('/mata-kuliah/{id}', [MataKuliahController::class, 'destroy']);
+>>>>>>> Stashed changes
 });
