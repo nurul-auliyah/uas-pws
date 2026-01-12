@@ -35,23 +35,30 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/fakultas/{fakultas_id}/prodi', [ProdiController::class, 'byFakultas']);
 
     //Kelas//
+    Route::prefix('kelas')->group(function () {
     Route::get('/', [KelasController::class, 'index']);
     Route::post('/', [KelasController::class, 'store']);
     Route::get('/{id}', [KelasController::class, 'show']);
     Route::put('/{id}', [KelasController::class, 'update']);
     Route::delete('/{id}', [KelasController::class, 'destroy']);
+    });
+
 
     //Kelas mahasiswa//
-    Route::get('/', [KelasMahasiswaController::class, 'index']);
-    Route::post('/', [KelasMahasiswaController::class, 'store']);
-    Route::get('/{id}', [KelasMahasiswaController::class, 'show']);
-    Route::put('/{id}', [KelasMahasiswaController::class, 'update']);
-    Route::delete('/{id}', [KelasMahasiswaController::class, 'destroy']);
+    Route::prefix('kelas-mahasiswa')->group(function () {
+        Route::get('/', [KelasMahasiswaController::class, 'index']);
+        Route::post('/', [KelasMahasiswaController::class, 'store']);
+        Route::get('/{id}', [KelasMahasiswaController::class, 'show']);
+        Route::put('/{id}', [KelasMahasiswaController::class, 'update']);
+        Route::delete('/{id}', [KelasMahasiswaController::class, 'destroy']);
+    });
 
     //mengajar//
-    Route::get('/', [MengajarController::class, 'index']);
-    Route::post('/', [MengajarController::class, 'store']);
-    Route::get('/{id}', [MengajarController::class, 'show']);
-    Route::put('/{id}', [MengajarController::class, 'update']);
-    Route::delete('/{id}', [MengajarController::class, 'destroy']);
+    Route::prefix('mengajar')->group(function () {
+        Route::get('/', [MengajarController::class, 'index']);
+        Route::post('/', [MengajarController::class, 'store']);
+        Route::get('/{id}', [MengajarController::class, 'show']);
+        Route::put('/{id}', [MengajarController::class, 'update']);
+        Route::delete('/{id}', [MengajarController::class, 'destroy']);
+    });
 });
