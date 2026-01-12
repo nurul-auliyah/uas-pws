@@ -19,4 +19,9 @@ class Prodi extends Model
     {
         return $this->belongsTo(Fakultas::class, 'fakultas_id', 'fakultas_id');
     }
+
+    public function students()
+    {
+        return $this->hasMany(Student::class, 'prodi_id', 'prodi_id');
+    }
 }

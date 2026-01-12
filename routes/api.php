@@ -17,9 +17,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/refresh', [AuthController::class, 'refresh']);
 });
 
-// Route::middleware('auth:api')->group(function () {
-//     Route::get('/fakultas', [FakultasController::class, 'index']);
-// });
 Route::middleware('auth:api')->group(function () {
     Route::get('/fakultas', [FakultasController::class, 'index']);
     Route::post('/fakultas', [FakultasController::class, 'store']);

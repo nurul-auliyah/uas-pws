@@ -37,22 +37,22 @@ class ProdiController extends Controller
     }
 
     // 🔹 GET PRODI BY ID
-    public function show($id)
+    public function show($prodi_id)
     {
         return response()->json([
             'success' => true,
-            'data' => Prodi::with('fakultas')->findOrFail($id)
+            'data' => Prodi::with('fakultas')->findOrFail($prodi_id)
         ]);
     }
 
     // 🔹 UPDATE ALL (PUT)
-    public function update(Request $request, $id)
+    public function update(Request $request, $prodi_id)
     {
-        $prodi = Prodi::findOrFail($id);
+        $prodi = Prodi::findOrFail($prodi_id);
 
         $request->validate([
             'fakultas_id' => 'required|exists:fakultas,fakultas_id',
-            'prodi_code'  => 'required|unique:prodi,prodi_code,' . $prodi->prodi_id . ',prodi_id',
+            'prodi_code'  => 'required|unique:prodi,prodi_code,' . $prodi_id . ',prodi_id',
             'prodi_name'  => 'required'
         ]);
 
@@ -66,33 +66,15 @@ class ProdiController extends Controller
     }
 
     // 🔹 UPDATE PARTIAL (PATCH)
-    public function patch(Request $request, $id)
+    public function patch(Request $request, $prodi_id)
     {
-        $prodi = Prodi::findOrFail($id);
-
-        $request->validate([
-            'fakultas_id' => 'sometimes|exists:fakultas,fakultas_id',
-            'prodi_code'  => 'sometimes|unique:prodi,prodi_code,' . $prodi->prodi_id . ',prodi_id',
-            'prodi_name'  => 'sometimes'
-        ]);
-
-        $prodi->update($request->only([
-            'fakultas_id',
-            'prodi_code',
-            'prodi_name'
-        ]));
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Prodi berhasil diperbarui sebagian',
-            'data' => $prodi
-        ]);
+        return $this->update($request, $prodi_id);
     }
 
     // 🔹 DELETE PRODI
-    public function destroy($id)
+    public function destroy($prodi_id)
     {
-        Prodi::findOrFail($id)->delete();
+        Prodi::findOrFail($prodi_id)->delete();
 
         return response()->json([
             'success' => true,

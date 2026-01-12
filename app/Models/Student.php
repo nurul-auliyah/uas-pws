@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
+
+    protected $table = 'students';
+    protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'nis',
+        'nama',
+        'prodi_id',
+        'alamat',
+        'no_telepon',
+        'email'
+    ];
+
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class, 'prodi_id', 'prodi_id');
+    }
 }

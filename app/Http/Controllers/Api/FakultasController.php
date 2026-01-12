@@ -40,9 +40,9 @@ class FakultasController extends Controller
         ], 201);
     }
 
-    public function show($id)
+    public function show($fakultas_id)
     {
-        $fakultas = Fakultas::find($id);
+        $fakultas = Fakultas::find($fakultas_id);
 
         if (!$fakultas) {
             return response()->json([
@@ -57,9 +57,9 @@ class FakultasController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $fakultas_id)
     {
-        $fakultas = Fakultas::find($id);
+        $fakultas = Fakultas::find($fakultas_id);
 
         if (!$fakultas) {
             return response()->json([
@@ -69,7 +69,7 @@ class FakultasController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'fakultas_code' => 'required|unique:fakultas,fakultas_code,' . $id . ',fakultas_id',
+            'fakultas_code' => 'required|unique:fakultas,fakultas_code,' . $fakultas_id . ',fakultas_id',
             'fakultas_name' => 'required|string|max:100'
         ]);
 
@@ -89,9 +89,9 @@ class FakultasController extends Controller
         ]);
     }
 
-    public function destroy($id)
+    public function destroy($fakultas_id)
     {
-        $fakultas = Fakultas::find($id);
+        $fakultas = Fakultas::find($fakultas_id);
 
         if (!$fakultas) {
             return response()->json([

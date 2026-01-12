@@ -75,13 +75,21 @@ class AuthController extends Controller
     ]);
 }
 
+    public function me()
+    {
+        return response()->json([
+            'success' => true,
+            'data' => Auth::guard('api')->user()
+        ]);
+    }
+
     public function logout()
     {
-    Auth::guard('api')->logout();
+        Auth::guard('api')->logout();
 
-    return response()->json([
-        'success' => true,
-        'message' => 'Logout berhasil'
-    ], 200);
+        return response()->json([
+            'success' => true,
+            'message' => 'Logout berhasil'
+        ], 200);
     }
 }
